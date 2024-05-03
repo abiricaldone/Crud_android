@@ -3,10 +3,13 @@ package doris.manzano.crud_abi_1a
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -27,6 +30,11 @@ class MainActivity : AppCompatActivity() {
         val txtPrecio = findViewById<EditText>(R.id.txtPrecio)
         val txtCantidad = findViewById<EditText>(R.id.txtCanidad)
         val btnAgregar = findViewById<Button>(R.id.btnAgregar)
+        val rcvDatos = findViewById<RecyclerView>(R.id.rcbDatos)
+
+        rcvDatos.layoutManager = LinearLayoutManager(this)
+
+        val miAdaptador = Adaptador(ListaDeDaos)
 
        btnAgregar.setOnClickListener {
            GlobalScope.launch(Dispatchers.IO){
@@ -39,5 +47,12 @@ class MainActivity : AppCompatActivity() {
 
            }
        }
+
+        class Adaptador(private val Datos: Array<String>){
+
+
+
+        }
+
     }
 }
